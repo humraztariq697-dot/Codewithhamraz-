@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codewithhamraz - Learn Coding 0 to 100% Free</title>
+<meta name="description" content="Learn coding from 0 to 100% free with Humraz. HTML, CSS, JavaScript, Python tutorials in simple English.">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+body { background:#0f172a; color:#e2e8f0; line-height:1.7; }
+header { background:linear-gradient(135deg,#f97316,#ec4899); padding:80px 20px; text-align:center; }
+header h1 { font-size:3rem; margin-bottom:15px; }
+header p { font-size:1.3rem; color:#ffedd5; }
+nav { background:#1e293b; padding:16px; display:flex; justify-content:center; gap:18px; flex-wrap:wrap; position:sticky; top:0; z-index:10; box-shadow:0 4px 6px rgba(0,0,0,0.3); }
+nav a { color:#94a3b8; text-decoration:none; padding:10px 20px; border-radius:8px; font-weight:600; transition:0.3s; }
+nav a:hover { background:#f97316; color:white; }
+.container { max-width:1000px; margin:60px auto; padding:0 20px; }
+.card { background:#1e293b; padding:35px; border-radius:16px; margin-bottom:35px; border-left:6px solid #f97316; }
+h2 { color:#fb923c; margin-bottom:20px; font-size:2rem; }
+h3 { color:#f472b6; margin:22px 0 12px 0; }
+.level { display:inline-block; background:#22c55e; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; margin-bottom:14px; }
+pre { background:#0b1120; padding:20px; border-radius:12px; overflow-x:auto; margin:20px 0; border:1px solid #334155; position:relative; }
+code { color:#38bdf8; font-size:15px; }
+.copy-btn { background:#f97316; border:none; color:white; padding:8px 16px; border-radius:7px; cursor:pointer; font-size:13px; position:absolute; top:12px; right:12px; font-weight:600; }
+.copy-btn:hover { background:#ea580c; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; margin-top:30px; }
+.box { background:#1e293b; padding:30px; border-radius:14px; text-align:center; border:2px solid #334155; transition:0.3s; }
+.box:hover { border-color:#f97316; transform:translateY(-6px); }
+footer { text-align:center; padding:45px 20px; color:#64748b; margin-top:70px; border-top:1px solid #334155; }
+@media(max-width:600px) { header h1 { font-size:2.2rem; } .card { padding:22px; } }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Codewithhamraz</h1>
+<p>Learn Coding: 0 to 100% | Free Tutorials by Humraz</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#html">HTML</a>
+<a href="#css">CSS</a>
+<a href="#js">JavaScript</a>
+<a href="#python">Python</a>
+<a href="#about">About</a>
+</nav>
+
+<div class="container">
+
+<section id="home" class="card">
+<h2>🚀 Welcome to Codewithhamraz</h2>
+<p><span class="level">Level 0</span> I teach coding in simple English + Hindi mix. No confusing words.</p>
+<p><span class="level">Level 100%</span> Build projects, make portfolio, crack interviews.</p>
+<p>Made by a 17-year-old for beginners like you. Let's start coding together!</p>
+
+<div class="grid">
+<div class="box"><h3>📄 HTML</h3><p>Build website structure</p></div>
+<div class="box"><h3>🎨 CSS</h3><p>Make it beautiful</p></div>
+<div class="box"><h3>⚡ JavaScript</h3><p>Add magic & actions</p></div>
+<div class="box"><h3>🐍 Python</h3><p>AI, Data, Backend</p></div>
+</div>
+</section>
+
+<section id="html" class="card">
+<h2>HTML Tutorial by Humraz</h2>
+<h3><span class="level">Level 0</span> What is HTML?</h3>
+<p>HTML = HyperText Markup Language. Think: HTML is the skeleton/bones of website. Without HTML, no website exists.</p>
+
+<h3><span class="level">Level 1</span> Your First Code</h3>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My First Page - Codewithhamraz&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello! I am learning with Codewithhamraz&lt;/h1&gt;
+  &lt;p&gt;Coding is fun!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p><b>Try this:</b> Save as `test.html` and open in browser. You will see your heading!</p>
+
+<h3><span class="level">Level 100%</span> Project Challenge</h3>
+<p>Make "About Me" page with your photo, name, 3 hobbies, and contact email. Share link with friends!</p>
+</section>
+
+<section id="css" class="card">
+<h2>CSS Tutorial by Humraz</h2>
+<h3><span class="level">Level 0</span> What is CSS?</h3>
+<p>CSS = Cascading Style Sheets. If HTML is skeleton, CSS is skin, hair, clothes. CSS makes site colorful & modern.</p>
+
+<h3><span class="level">Level 1</span> Color Your Text</h3>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>h1 {
+  color: #f97316;
+  text-align: center;
+  font-size: 45px;
+  font-family: Arial;
+}
+p {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 8px;
+}</code></pre>
+</section>
+
+<section id="js" class="card">
+<h2>JavaScript Tutorial by Humraz</h2>
+<h3><span class="level">Level 0</span> What is JavaScript?</h3>
+<p>JavaScript = Brain + Muscles. HTML=body, CSS=clothes, JS=brain. JS makes buttons work, forms submit, animations run.</p>
+
+<h3><span class="level">Level 1</span> Button Click Magic</h3>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>&lt;button onclick="alert('Thanks for visiting Codewithhamraz!')"&gt;
+  Click Me
+&lt;/button&gt;</code></pre>
+</section>
+
+<section id="python" class="card">
+<h2>Python Tutorial by Humraz</h2>
+<h3><span class="level">Level 0</span> What is Python?</h3>
+<p>Python = Easiest coding language. Reads like English. Used by Google, YouTube, Instagram, ChatGPT, AI.</p>
+
+<h3><span class="level">Level 1</span> Your First Python Code</h3>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre><code>name = input("What is your name? ")
+print("Welcome to Codewithhamraz, " + name + "!")
+print("Let's learn coding together!")</code></pre>
+</section>
+
+<section id="about" class="card">
+<h2>About Humraz</h2>
+<p>Hi! I am Humraz, 17 years old. I started coding at 15. I know how confusing coding feels in the beginning.</p>
+<p>That's why I made Codewithhamraz - to teach coding in the simplest way possible. 0 to 100% journey, step by step.</p>
+<p>Follow me, learn with me, grow with me 🚀</p>
+</section>
+
+</div>
+
+<footer>
+Made with ❤️ by Humraz | Codewithhamraz.com | 0 to 100% Free Coding Tutorials | 2026
+</footer>
+
+<script>
+function copyCode(btn) {
+  const code = btn.nextElementSibling.querySelector('code').innerText;
+  navigator.clipboard.writeText(code);
+  btn.innerText = "Copied!";
+  setTimeout(() => btn.innerText = "Copy", 2000);
+}
+</script>
+
+</body>
+</html>
