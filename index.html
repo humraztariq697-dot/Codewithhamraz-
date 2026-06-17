@@ -3,63 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeWithHamraz - Cyberpunk Coding Hub</title>
+    <title>CodeWithHamraz - Cyberpunk Ultimate Coding Hub</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: radial-gradient(circle at center, #10141d 0%, #080a0e 100%); color: #e0e6ed; overflow-x: hidden; min-height: 100vh; }
         a { text-decoration: none; transition: 0.3s; }
 
-        /* Navigation Header */
+        /* Cyberpunk Header */
         header { background: rgba(16, 20, 29, 0.9); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f293a; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
         .logo { font-size: 24px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #58a6ff; }
         .nav-links a { color: #8b949e; font-size: 14px; font-weight: 500; text-transform: uppercase; margin-left: 20px; }
         .nav-links a:hover { color: #fff; text-shadow: 0 0 5px #fff; }
 
-        /* Main Homepage Section */
+        /* Main Homepage Panel */
         #main-homepage { padding: 80px 40px; display: block; }
-        .hero { text-align: center; margin-bottom: 80px; position: relative; }
+        .hero { text-align: center; margin-bottom: 80px; }
         .hero h1 { font-size: 50px; color: #fff; text-shadow: 0 0 15px #ffd43b; margin-bottom: 15px; }
-        .hero p { font-size: 18px; color: #8b949e; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        .hero p { font-size: 18px; color: #8b949e; max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
-        /* Redesigned 3D Glowing Course Cards */
-        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .course-card { background: #161b22; border: 1px solid #1f293a; border-radius: 12px; padding: 35px; text-align: center; transition: 0.4s; cursor: pointer; position: relative; }
+        /* 3D Dynamic Cards Layout */
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .course-card { background: #161b22; border: 1px solid #1f293a; border-radius: 12px; padding: 35px; text-align: center; transition: 0.4s; cursor: pointer; }
         .course-card h3 { font-size: 22px; color: #fff; margin-bottom: 12px; }
         .course-card p { font-size: 14px; color: #8b949e; line-height: 1.5; }
         
-        /* Individual Card Glows */
+        #zero-card:hover { border-color: #a5d6ff; box-shadow: 0 10px 30px rgba(165, 214, 255, 0.2); transform: translateY(-10px); }
+        #web-card:hover { border-color: #ff7b72; box-shadow: 0 10px 30px rgba(255, 123, 114, 0.2); transform: translateY(-10px); }
         #python-card:hover { border-color: #ffd43b; box-shadow: 0 10px 30px rgba(255, 212, 59, 0.2); transform: translateY(-10px); }
-        #js-card:hover { border-color: #f7df1e; box-shadow: 0 10px 30px rgba(247, 223, 30, 0.2); transform: translateY(-10px); }
         #ml-card:hover { border-color: #00ced1; box-shadow: 0 10px 30px rgba(0, 206, 209, 0.2); transform: translateY(-10px); }
 
-        /* COURSE INNER SECTIONS (Hidden initially) */
+        /* COURSE INNER VIEW PANELS */
         .course-container { display: none; width: 100%; min-height: 100vh; }
         .course-container.active { display: flex; }
 
-        /* Universal Sidebar */
         .sidebar { width: 320px; background: #080a0e; padding: 30px 15px; border-right: 1px solid #1f293a; height: 100vh; position: sticky; top: 75px; overflow-y: auto; }
-        .sidebar h2 { text-align: center; margin-bottom: 25px; font-size: 20px; color: #ffd43b; text-transform: uppercase; }
+        .sidebar h2 { text-align: center; margin-bottom: 25px; font-size: 18px; color: #ffd43b; text-transform: uppercase; }
         .sidebar a { display: block; color: #8b949e; padding: 12px 15px; border-radius: 6px; margin-bottom: 8px; font-size: 13px; font-weight: 500; cursor: pointer; }
         .sidebar a:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .sidebar a.active { color: #fff; background: #161b22; border: 1px solid #306998; box-shadow: 0 0 15px rgba(48, 105, 152, 0.3); }
 
-        /* Content Area */
         .content-area { flex: 1; padding: 60px 40px; background: #0d1117; }
         .chapter-content { display: none; max-width: 900px; margin: 0 auto; animation: fadeIn 0.4s; }
         .chapter-content.active { display: block; }
 
-        /* Typography inside courses */
         h1.chapter-title { color: #58a6ff; margin-bottom: 20px; font-size: 32px; border-bottom: 2px solid #306998; padding-bottom: 10px; }
         h3 { color: #ffd43b; margin: 25px 0 12px 0; font-size: 18px; }
         p { line-height: 1.7; margin-bottom: 18px; font-size: 16px; color: #c9d1d9; }
-        ul, ol { margin-left: 25px; margin-bottom: 18px; line-height: 1.7; color: #c9d1d9; }
-        li { margin-bottom: 7px; }
-
-        /* Code Block Styling */
         pre { background: #161b22; border: 1px solid #1f293a; border-radius: 8px; padding: 20px; margin: 20px 0; overflow-x: auto; font-family: monospace; font-size: 14px; color: #f0f6fc; }
         .practice-set { background: rgba(255, 212, 59, 0.05); border-left: 4px solid #ffd43b; padding: 25px; margin-top: 40px; border-radius: 8px; }
-        .inner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 25px 0; }
-        .inner-card { background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 6px; text-align: center; font-size: 14px; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -76,54 +67,114 @@
 
     <section id="main-homepage">
         <div class="hero">
-            <h1>Learn. Practice. Build.</h1>
-            <p>Master the world's most powerful coding languages with interactive handbooks and high-tech real-world projects.</p>
+            <h1>Absolute Zero to Master Code Hub</h1>
+            <p>Agar aapko coding ka 'C' bhi nahi pata, toh aap bilkul sahi jagah aaye hain. Shuru se shuru karein aur expert banein!</p>
         </div>
 
         <div class="course-grid" id="courses">
-            <div class="course-card" id="python-card" onclick="openCourse('python')">
-                <h3>🐍 Python Programming</h3>
-                <p>Complete Beginner to Advanced Python Handbook, Practice Sets, and Mega AI Projects.</p>
+            <div class="course-card" id="zero-card" onclick="openCourse('zero')">
+                <h3>🐣 Chapter 00: Absolute Zero</h3>
+                <p>Coding kya hai? Kaise hoti hai? Computer kaise kaam karta hai? Sab kuch bilkul aasan bhasha mein seekhein.</p>
             </div>
 
-            <div class="course-card" id="js-card" onclick="openCourse('javascript')">
-                <h3>⚡ JavaScript Mastery</h3>
-                <p>Master Core JS, DOM Manipulation, Promises, Async/Await and Interactive Web Apps.</p>
+            <div class="course-card" id="web-card" onclick="openCourse('web')">
+                <h3>🌐 Full Web Development</h3>
+                <p>Master HTML5, CSS3, aur JavaScript taaki aap apni khud ki real website aur web apps bana sakein.</p>
+            </div>
+
+            <div class="course-card" id="python-card" onclick="openCourse('python')">
+                <h3>🐍 Python Programming</h3>
+                <p>Complete Python Handbook (All 13 Chapters) with Practice Sets, Projects, aur Mega Assistant Tools.</p>
             </div>
 
             <div class="course-card" id="ml-card" onclick="openCourse('ml')">
-                <h3>🤖 Machine Learning & AI</h3>
-                <p>Explore Data Science, Neural Networks, Computer Vision, and OpenAI Implementations.</p>
+                <h3>🤖 AI & Machine Learning</h3>
+                <p>Data Science, Automation Neural Networks, aur Advanced ChatGPT/OpenAI API integrations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="zero-section" class="course-container">
+        <div class="sidebar">
+            <h2>Genesis Guide</h2>
+            <a onclick="showChapter('zero', 'zero-what')" class="active">❓ Coding Kya Hai?</a>
+            <a onclick="showChapter('zero', 'zero-lang')">🔤 Languages Kya Hoti Hain?</a>
+            <a onclick="showChapter('zero', 'zero-how')">🛠️ Coding Kaise Karte Hain?</a>
+        </div>
+        <div class="content-area">
+            <div id="zero-what" class="chapter-content active">
+                <h1 class="chapter-title">Coding Kya Hai? (What is Programming?)</h1>
+                <p>Jaise hum aapas mein baat karne ke liye Hindi ya English bolte hain, waise hi computer se kaam karwane ke liye hume ek language ki zaroorat hoti hai. Computer hamari normal bhasha nahi samajhta.</p>
+                <p><strong>Coding ka asan matlab:</strong> Computer ko step-by-step instructions (aadesh) dena taaki woh hamare liye koi kaam automate kar sake, software bana sake ya website chala sake. Coding ek tarah se computer ke liye recipe likhne jaisa hai.</p>
+            </div>
+            <div id="zero-lang" class="chapter-content">
+                <h1 class="chapter-title">Coding Languages Kya Hoti Hain?</h1>
+                <p>Duniya mein alag-alag kamo ke liye alag languages hoti hain:</p>
+                <ul>
+                    <li><strong>HTML/CSS/JS:</strong> Website banane ke liye use hoti hain.</li>
+                    <li><strong>Python:</strong> Sabse aasan language hai, jo AI, Games aur Automation mein use hoti hai.</li>
+                    <li><strong>C++ / Java:</strong> Heavy apps aur games ke backend systems ke liye use hoti hain.</li>
+                </ul>
+            </div>
+            <div id="zero-how" class="chapter-content">
+                <h1 class="chapter-title">Coding Kaise Karte Hain?</h1>
+                <p>Coding karne ke liye aapko kisi special ya super computer ki zaroorat nahi hai. Aap apne phone ya normal laptop par bhi code likh sakte hain. Code likhne ke liye hume ek software chahiye hota hai jise Text Editor (jaise VS Code ya Quick Edit) kehte hain. Isme code likh kar run karne par output dikhta hai.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="web-section" class="course-container">
+        <div class="sidebar">
+            <h2>Web Dev Guide</h2>
+            <a onclick="showChapter('web', 'web-html')" class="active">🏗️ HTML5: Structural Design</a>
+            <a onclick="showChapter('web', 'web-css')">🎨 CSS3: Styling & Layout</a>
+            <a onclick="showChapter('web', 'web-js')">⚡ JavaScript Integration</a>
+        </div>
+        <div class="content-area">
+            <div id="web-html" class="chapter-content active">
+                <h1 class="chapter-title">HTML5 - Website ka Structure</h1>
+                <p>HTML (HyperText Markup Language) se website ka skeleton banta hai. Isse headings, paragraphs aur buttons bante hain.</p>
+                <pre><code>&lt;button&gt;Click Me!&lt;/button&gt;</code></pre>
+            </div>
+            <div id="web-css" class="chapter-content">
+                <h1 class="chapter-title">CSS3 - Design aur Colors</h1>
+                <p>CSS (Cascading Style Sheets) se hum HTML element ko colors, sizing, lights aur background decorations देते हैं, जिससे वेबसाइट सुंदर लगती है.</p>
+                <pre><code>button { background: neon; color: white; }</code></pre>
+            </div>
+            <div id="web-js" class="chapter-content">
+                <h1 class="chapter-title">JavaScript - Website ka Dimag</h1>
+                <p>JavaScript se website responsive aur dynamic banti hai. Button click hone par kya hoga, data kaise save hoga—yeh sab JS handles karta hai.</p>
+                <pre><code>console.log("Website Brain Active!");</code></pre>
             </div>
         </div>
     </section>
 
     <section id="python-section" class="course-container">
         <div class="sidebar">
-            <h2>Python Handbook</h2>
-            <a onclick="showChapter('py', 'py-cover')" class="active">🏠 Overview</a>
-            <a onclick="showChapter('py', 'py-ch1')">💥 Ch 1: Modules & Pip</a>
-            <a onclick="showChapter('py', 'py-ch2')">🔢 Ch 2: Variables & Datatypes</a>
-            <a onclick="showChapter('py', 'py-ch3')">🔤 Ch 3: Strings</a>
-            <a onclick="showChapter('py', 'py-ch4')">📋 Ch 4: Lists & Tuples</a>
-            <a onclick="showChapter('py', 'py-ch5')">📖 Ch 5: Dictionary & Sets</a>
-            <a onclick="showChapter('py', 'py-ch6')">🔀 Ch 6: Conditionals</a>
-            <a onclick="showChapter('py', 'py-ch7')">🔄 Ch 7: Loops in Python</a>
-            <a onclick="showChapter('py', 'py-ch8')">⚙️ Ch 8: Functions & Recursion</a>
-            <a onclick="showChapter('py', 'py-ch9')">📂 Ch 9: File I/O</a>
-            <a onclick="showChapter('py', 'py-ch10')">🏗️ Ch 10: OOPs Concepts</a>
-            <a onclick="showChapter('py', 'py-ch11')">🧬 Ch 11: Inheritance</a>
-            <a onclick="showChapter('py', 'py-ch12')">🚀 Ch 12: Advanced Python 1</a>
-            <a onclick="showChapter('py', 'py-ch13')">🔥 Ch 13: Advanced Python 2</a>
-            <a onclick="showChapter('py', 'py-proj1')">🎮 Project 1: Snake Water Gun</a>
-            <a onclick="showChapter('py', 'py-proj2')">🎯 Project 2: Perfect Guess</a>
-            <a onclick="showChapter('py', 'py-megaproj')">🤖 Mega AI Projects</a>
+            <h2>Python Full Stack</h2>
+            <a onclick="showChapter('python', 'py-cover')" class="active">🏠 Overview</a>
+            <a onclick="showChapter('python', 'py-ch1')">💥 Ch 1: Modules & Pip</a>
+            <a onclick="showChapter('python', 'py-ch2')">🔢 Ch 2: Variables & Datatypes</a>
+            <a onclick="showChapter('python', 'py-ch3')">🔤 Ch 3: Strings</a>
+            <a onclick="showChapter('python', 'py-ch4')">📋 Ch 4: Lists & Tuples</a>
+            <a onclick="showChapter('python', 'py-ch5')">📖 Ch 5: Dictionary & Sets</a>
+            <a onclick="showChapter('python', 'py-ch6')">🔀 Ch 6: Conditionals</a>
+            <a onclick="showChapter('python', 'py-ch7')">🔄 Ch 7: Loops in Python</a>
+            <a onclick="showChapter('python', 'py-ch8')">⚙️ Ch 8: Functions & Recursion</a>
+            <a onclick="showChapter('python', 'py-ch9')">📂 Ch 9: File I/O</a>
+            <a onclick="showChapter('python', 'py-ch10')">🏗️ Ch 10: OOPs Concepts</a>
+            <a onclick="showChapter('python', 'py-ch11')">🧬 Ch 11: Inheritance</a>
+            <a onclick="showChapter('python', 'py-ch12')">🚀 Ch 12: Advanced Python 1</a>
+            <a onclick="showChapter('python', 'py-ch13')">🔥 Ch 13: Advanced Python 2</a>
+            <a onclick="showChapter('python', 'py-proj1')">🎮 Project 1: Snake Water Gun</a>
+            <a onclick="showChapter('python', 'py-proj2')">🎯 Project 2: Perfect Guess</a>
+            <a onclick="showChapter('python', 'py-megaproj')">🤖 Mega AI Projects</a>
         </div>
         <div class="content-area">
             <div id="py-cover" class="chapter-content active">
                 <h1 class="chapter-title">The Ultimate Python Handbook</h1>
                 <p>Welcome to CodeWithHamraz's Python course! Python rules the industry in AI, Data Science, and Web Automation.</p>
-                <pre><code>print("Welcome to CodeWithHamraz Python Guide!")</code></pre>
+                <pre><code>print("CodeWithHamraz Premium Python Module Loaded!")</code></pre>
             </div>
             <div id="py-ch1" class="chapter-content">
                 <h1 class="chapter-title">Chapter 1: Modules, Comments & Pip</h1>
@@ -131,143 +182,56 @@
                 <p><strong>Pip:</strong> Package manager jo external modules install karta hai (e.g. <code>pip install flask</code>).</p>
                 <pre><code>import os  # Built-in module
 print("Hello World")  # First Program</code></pre>
+                <div class="practice-set">
+                    <h3>📝 Practice Set</h3>
+                    <p>1. Write a program to print Twinkle twinkle little star poem.</p>
+                </div>
             </div>
-            <div id="py-ch2" class="chapter-content">
-                <h1 class="chapter-title">Chapter 2: Variables and Datatypes</h1>
-                <p>Variables data containers hote hain. Python input automatic data type scan karta hai.</p>
-                <pre><code>a = 45  # Integer
-b = "Hamraz"  # String
-c = 85.6  # Float</code></pre>
-            </div>
-            <div id="py-ch3" class="chapter-content">
-                <h1 class="chapter-title">Chapter 3: Strings</h1>
-                <p>String slice syntax: <code>name[start:end]</code>. Characters count, change aur modification standard operations hain.</p>
-                <pre><code>name = "Hamraz"
-print(name[0:3]) # Output: Ham</code></pre>
-            </div>
-            <div id="py-ch4" class="chapter-content"><h1 class="chapter-title">Chapter 4: Lists & Tuples</h1><p>List mutable (changeable) container hai aur Tuple immutable (unchangeable) hota hai.</p><pre><code>myList = [1, 5, 8, "Python"]
-myTuple = (1, 2, 3)</code></pre></div>
-            <div id="py-ch5" class="chapter-content"><h1 class="chapter-title">Chapter 5: Dictionary & Sets</h1><p>Dictionary Key-Value pair collections store karta hai, Sets unique non-repetitive values hold karta hai.</p><pre><code>myDict = {"key": "value"}
-mySet = {1, 2, 3, 3} # duplicate 3 is ignored</code></pre></div>
-            <div id="py-ch6" class="chapter-content"><h1 class="chapter-title">Chapter 6: Conditional Expressions</h1><p>Decision making ke liye <code>if-elif-else</code> ladder statements use hote hain.</p><pre><code>if(a > 18): print("Adult")
-else: print("Minor")</code></pre></div>
-            <div id="py-ch7" class="chapter-content"><h1 class="chapter-title">Chapter 7: Loops in Python</h1><p>Code repetitive block execution ke liye <code>for</code> aur <code>while</code> loops optimized hain.</p><pre><code>for i in range(10):
-    print(i)</code></pre></div>
-            <div id="py-ch8" class="chapter-content"><h1 class="chapter-title">Chapter 8: Functions & Recursion</h1><p>Reusable code block dynamic processing functions generate karta hai. Recursion self-calling operations execute karta hai.</p><pre><code>def greet(name):
-    print("Hello " + name)</code></pre></div>
-            <div id="py-ch9" class="chapter-content"><h1 class="chapter-title">Chapter 9: File I/O</h1><p>Hard drive data files persistent data management control data load methods optimize karti hai.</p><pre><code>with open("file.txt", "r") as f:
-    data = f.read()</code></pre></div>
-            <div id="py-ch10" class="chapter-content"><h1 class="chapter-title">Chapter 10: OOPs Concepts</h1><p>Classes, Objects aur attributes blueprint standard real-world architectural entity logic design models hain.</p><pre><code>class Employee:
-    company = "Google"</code></pre></div>
-            <div id="py-ch11" class="chapter-content"><h1 class="chapter-title">Chapter 11: Inheritance</h1><p>Base class attributes and behaviors code extension sub-class properties logic expand methods inject patterns support krti h.</p></div>
-            <div id="py-ch12" class="chapter-content"><h1 class="chapter-title">Chapter 12: Advanced Python 1</h1><p>Exception Handling (try-except), Walrus operator, Match Case aur Custom Exception management system operations standard code handling types compile karta h.</p></div>
-            <div id="py-ch13" class="chapter-content"><h1 class="chapter-title">Chapter 13: Advanced Python 2</h1><p>Lambda expressions, Map, Filter, Reduce architecture operations functions sequence logic structures design optimize tools execute elements compile methods handle execution map layers deploy parameters sync tags pattern models build patterns execute structure.</p></div>
-            <div id="py-proj1" class="chapter-content"><h1 class="chapter-title">Project 1: Snake Water Gun</h1><p>Random matrix module choices logical conditions engine computer processing workflow structure game logic compile operations trace map handles.</p></div>
-            <div id="py-proj2" class="chapter-content"><h1 class="chapter-title">Project 2: Perfect Guess Game</h1><p>High low system algorithm loop counter tracking user engine score generation modules build structure.</p></div>
-            <div id="py-megaproj" class="chapter-content">
-                <h1 class="chapter-title">🤖 Mega AI Projects</h1>
-                <h3>1. Jarvis Voice Assistant</h3>
-                <p>Speech recognition, Pyttsx3 text modules, internet browsers aur dynamic data processing engine control setup execute patterns system deploy architecture.</p>
-                <h3>2. Auto WhatsApp Chatbot</h3>
-                <p>Pyautogui system capture click simulation coordinates monitoring and dynamic processing automation.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="javascript-section" class="course-container">
-        <div class="sidebar">
-            <h2>JavaScript Guide</h2>
-            <a onclick="showChapter('js', 'js-cover')" class="active">🏠 JS Overview</a>
-            <a onclick="showChapter('js', 'js-ch1')">⚡ Variables & Operators</a>
-            <a onclick="showChapter('js', 'js-ch2')">🎯 DOM Manipulation</a>
-            <a onclick="showChapter('js', 'js-ch3')">🚀 Async Await & API</a>
-            <a onclick="showChapter('js', 'js-proj')">🎮 Interactive Projects</a>
-        </div>
-        <div class="content-area">
-            <div id="js-cover" class="chapter-content active">
-                <h1 class="chapter-title">JavaScript Mastery</h1>
-                <p>JavaScript core internet interaction processing software model dynamic interfaces construct data pipeline client layer system deploy systems automation control web structure development handles.</p>
-                <pre><code>console.log("JavaScript Engine Live!");</code></pre>
-            </div>
-            <div id="js-ch1" class="chapter-content">
-                <h1 class="chapter-title">Variables & Modern Scopes</h1>
-                <p>Modern scripts contain scope optimization declarations <code>let</code>, <code>const</code>, and <code>var</code> global structures tracking elements definitions block execution scope logic layout operations.</p>
-                <pre><code>const pi = 3.14159;
-let userScore = 100;</code></pre>
-            </div>
-            <div id="js-ch2" class="chapter-content">
-                <h1 class="chapter-title">Document Object Model (DOM)</h1>
-                <p>DOM logic query system event processing interface injection handlers dynamically web document content manipulate click trackers elements update layout design components rendering dynamic engine rules tracking selectors structural manipulation control patterns.</p>
-                <pre><code>document.querySelector("#btn").addEventListener("click", () => {
-    document.body.style.backgroundColor = "cyan";
-});</code></pre>
-            </div>
-            <div id="js-ch3" class="chapter-content">
-                <h1 class="chapter-title">Promises & Asynchronous Execution</h1>
-                <p>Asynchronous runtime execution handles remote database communication streams server requests fetch structural logic handling architecture models <code>async/await</code> pipeline tracking standard patterns.</p>
-                <pre><code>async function fetchUserData() {
-    let response = await fetch('https://api.github.com');
-    let data = await response.json();
-    console.log(data);
-}</code></pre>
-            </div>
-            <div id="js-proj" class="chapter-content">
-                <h1 class="chapter-title">JS Real-World Projects</h1>
-                <h3>1. Dynamic Weather Web App</h3>
-                <p>Live remote weather station open mapping structure weather parameters client interfaces rendering live widgets engine execution layers update dashboard components display metrics tracking tools control layout modules framework.</p>
-            </div>
+            <div id="py-ch2" class="chapter-content"><h1 class="chapter-title">Chapter 2: Variables and Datatyping</h1><p>Variables data contents store karte hain. Types specify operations automatically.</p></div>
+            <div id="py-ch3" class="chapter-content"><h1 class="chapter-title">Chapter 3: String Operations</h1><p>String slice mechanisms configurations index control strings character modification setups.</p></div>
+            <div id="py-ch4" class="chapter-content"><h1 class="chapter-title">Chapter 4: Lists & Tuples</h1><p>Lists dynamic flexible mutable layout containers sets store values types systems handle elements.</p></div>
+            <div id="py-ch5" class="chapter-content"><h1 class="chapter-title">Chapter 5: Dictionary & Unique Sets</h1><p>Key-value mappings index unique records lookup processing operations.</p></div>
+            <div id="py-ch6" class="chapter-content"><h1 class="chapter-title">Chapter 6: Conditional Framework</h1><p>If-elif-else execution conditional control flows branch logic setup.</p></div>
+            <div id="py-ch7" class="chapter-content"><h1 class="chapter-title">Chapter 7: Loops Processing</h1><p>Repetitive script sequence iterables tracking <code>for</code> and <code>while</code> statements.</p></div>
+            <div id="py-ch8" class="chapter-content"><h1 class="chapter-title">Chapter 8: Functions Engine</h1><p>Reusable block logic module execution stack structures definitions.</p></div>
+            <div id="py-ch9" class="chapter-content"><h1 class="chapter-title">Chapter 9: Persistent File I/O</h1><p>Data drive storage persistent stream reads logging configurations files handling systems.</p></div>
+            <div id="py-ch10" class="chapter-content"><h1 class="chapter-title">Chapter 10: OOPs Blueprint</h1><p>Class declarations, instantiation self attributes methods logical object models structure.</p></div>
+            <div id="py-ch11" class="chapter-content"><h1 class="chapter-title">Chapter 11: Inheritance Expansion</h1><p>Base child object extensions methods overriding configuration structures.</p></div>
+            <div id="py-ch12" class="chapter-content"><h1 class="chapter-title">Chapter 12: Advanced Engine 1</h1><p>Exception error checking frameworks match systems Walrus parameters syntax definitions.</p></div>
+            <div id="py-ch13" class="chapter-content"><h1 class="chapter-title">Chapter 13: Advanced Engine 2</h1><p>Lambda single line mapping systems filter reduce array structure data control flows pipelines.</p></div>
+            <div id="py-proj1" class="chapter-content"><h1 class="chapter-title">Project 1: Snake Water Gun</h1><p>Random execution choice parameters loop verification algorithm structural rules.</p></div>
+            <div id="py-proj2" class="chapter-content"><h1 class="chapter-title">Project 2: Perfect Guess</h1><p>Random checking automated system count logs processing tracking models data setup.</p></div>
+            <div id="py-megaproj" class="chapter-content"><h1 class="chapter-title">🤖 Mega Project Assistant</h1><p>Voice automated systems AI pipelines layout automation script data control interfaces.</p></div>
         </div>
     </section>
 
     <section id="ml-section" class="course-container">
         <div class="sidebar">
-            <h2>AI & ML Core</h2>
-            <a onclick="showChapter('ml', 'ml-cover')" class="active">🏠 ML Overview</a>
-            <a onclick="showChapter('ml', 'ml-ch1')">📊 Data Prep & NumPy</a>
-            <a onclick="showChapter('ml', 'ml-ch2')">📈 Regression Models</a>
-            <a onclick="showChapter('ml', 'ml-ch3')">🧠 Deep Learning & AI</a>
+            <h2>AI Core Stack</h2>
+            <a onclick="showChapter('ml', 'ml-intro')" class="active">🤖 AI Kya Hai?</a>
+            <a onclick="showChapter('ml', 'ml-models')">🧠 Machine Learning Models</a>
         </div>
         <div class="content-area">
-            <div id="ml-cover" class="chapter-content active">
-                <h1 class="chapter-title">Machine Learning & Artificial Intelligence</h1>
-                <p>Mathematical calculations predictive algorithm automation systems deep array vector manipulation dataset classification clusters neural structures intelligence setup engineering data science control system patterns tracking training optimization metrics standard model.</p>
+            <div id="ml-intro" class="chapter-content active">
+                <h1 class="chapter-title">Artificial Intelligence (AI) Kya Hai?</h1>
+                <p>AI ka matlab hai computer ko insaano jaisa dimaag dena taaki woh khud soch sake, images ko pehchan sake, aur aapse baatein kar sake (jaise ChatGPT ya Gemini).</p>
             </div>
-            <div id="ml-ch1" class="chapter-content">
-                <h1 class="chapter-title">Data Science Libraries (NumPy & Pandas)</h1>
-                <p>Multi dimensional matrix processing data framing vector calculations analysis array transformation matrix logic execution framework data profiling metrics standard data structures load optimization clean records formatting modules trace structure parsing tools setup elements execution matrix maps sync.</p>
-                <pre><code>import numpy as np
-import pandas as pd
-df = pd.read_csv('dataset.csv')</code></pre>
-            </div>
-            <div id="ml-ch2" class="chapter-content">
-                <h1 class="chapter-title">Supervised Machine Learning Algorithms</h1>
-                <p>Linear Regression, Logical classification tree structures modeling split validation training data distribution curve patterns evaluation tracking metrics mean error square checking accuracy loss verification algorithms design calculation system deploy logic framework structural optimization.</p>
-                <pre><code>from sklearn.linear_model import LinearRegression
-model = LinearRegression()
-model.fit(X_train, y_train)</code></pre>
-            </div>
-            <div id="ml-ch3" class="chapter-content">
-                <h1 class="chapter-title">Deep Learning Architecture (TensorFlow & Neural Nets)</h1>
-                <p>Artificial Neural Network design nodes weights backpropagation activations functions computation systems processing hidden network matrix hidden layers computation vision recognition transformers models design pipelines deployment automated cognitive framework logic calculation systems processing models layout structure track optimized.</p>
+            <div id="ml-models" class="chapter-content">
+                <h1 class="chapter-title">Machine Learning (ML)</h1>
+                <p>ML AI ka ek hissa hai jahan hum computer ko bohot saara data dikha kar use train karte hain, taaki woh future ki cheezein predict kar sake.</p>
             </div>
         </div>
     </section>
 
     <script>
         function openCourse(courseType) {
-            // Hide main homepage layout
             document.getElementById('main-homepage').style.display = 'none';
-            
-            // Close any currently running courses
             const activeContainers = document.querySelectorAll('.course-container');
             activeContainers.forEach(container => container.classList.remove('active'));
             
-            // Activate the correct course section container
             const selectedSection = document.getElementById(courseType + '-section');
             if (selectedSection) {
                 selectedSection.classList.add('active');
-                
-                // Find first item in that specific course container sidebar and display it
                 const initialContentId = selectedSection.querySelector('.chapter-content').id;
                 showChapter(courseType, initialContentId);
             }
@@ -275,11 +239,8 @@ model.fit(X_train, y_train)</code></pre>
         }
 
         function showHomepage() {
-            // Shut down all courses view panels
             const activeContainers = document.querySelectorAll('.course-container');
             activeContainers.forEach(container => container.classList.remove('active'));
-            
-            // Reload home layout dashboard
             document.getElementById('main-homepage').style.display = 'block';
             window.scrollTo(0, 0);
         }
@@ -288,15 +249,12 @@ model.fit(X_train, y_train)</code></pre>
             const contextSection = document.getElementById(coursePrefix + '-section');
             if (!contextSection) return;
 
-            // Hide previous tabs content within this active section scope
             const siblingChapters = contextSection.querySelectorAll('.chapter-content');
             siblingChapters.forEach(tab => tab.classList.remove('active'));
 
-            // Wake up active requested chapter container panel
             const currentTab = document.getElementById(targetChapterId);
             if (currentTab) currentTab.classList.add('active');
 
-            // Toggle sidebar active selection visual style indicators
             const navigationLinks = contextSection.querySelectorAll('.sidebar a');
             navigationLinks.forEach(link => link.classList.remove('active'));
 
