@@ -1,124 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Codewithhamraz - Learn Coding 0 to 100% Free</title>
-<meta name="description" content="Learn coding from 0 to 100% free with Hamraz. HTML, CSS, JavaScript, Python tutorials in simple English.">
-<style>
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-body { background:#0f172a; color:#e2e8f0; line-height:1.7; }
-header { background:linear-gradient(135deg,#f97316,#ec4899); padding:80px 20px; text-align:center; }
-header h1 { font-size:3rem; margin-bottom:15px; }
-header p { font-size:1.3rem; color:#ffedd5; }
-nav { background:#1e293b; padding:16px; display:flex; justify-content:center; gap:18px; flex-wrap:wrap; position:sticky; top:0; z-index:10; }
-nav a { color:#94a3b8; text-decoration:none; padding:10px 20px; border-radius:8px; font-weight:600; transition:0.3s; }
-nav a:hover { background:#f97316; color:white; }
-.container { max-width:1000px; margin:60px auto; padding:0 20px; }
-.card { background:#1e293b; padding:35px; border-radius:16px; margin-bottom:35px; border-left:6px solid #f97316; }
-h2 { color:#fb923c; margin-bottom:20px; font-size:2rem; }
-h3 { color:#f472b6; margin:22px 0 12px 0; }
-.level { display:inline-block; background:#22c55e; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; margin-bottom:14px; }
-pre { background:#0b1120; padding:20px; border-radius:12px; overflow-x:auto; margin:20px 0; border:1px solid #334155; position:relative; }
-code { color:#38bdf8; font-size:15px; }
-.copy-btn { background:#f97316; border:none; color:white; padding:8px 16px; border-radius:7px; cursor:pointer; font-size:13px; position:absolute; top:12px; right:12px; font-weight:600; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; margin-top:30px; }
-.box { background:#1e293b; padding:30px; border-radius:14px; text-align:center; border:2px solid #334155; }
-footer { text-align:center; padding:45px 20px; color:#64748b; margin-top:70px; border-top:1px solid #334155; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWithHamraz - Cyberpunk Coding Hub</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: radial-gradient(circle at center, #10141d 0%, #080a0e 100%); color: #e0e6ed; overflow-x: hidden; min-height: 100vh; }
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* Navigation Header */
+        header { background: rgba(16, 20, 29, 0.9); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1f293a; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        .logo { font-size: 24px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px #58a6ff; }
+        .nav-links a { color: #8b949e; font-size: 14px; font-weight: 500; text-transform: uppercase; margin-left: 20px; }
+        .nav-links a:hover { color: #fff; text-shadow: 0 0 5px #fff; }
+
+        /* Main Homepage Section */
+        #main-homepage { padding: 80px 40px; display: block; }
+        .hero { text-align: center; margin-bottom: 80px; position: relative; }
+        .hero h1 { font-size: 50px; color: #fff; text-shadow: 0 0 15px #ffd43b; margin-bottom: 15px; }
+        .hero p { font-size: 18px; color: #8b949e; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* Redesigned 3D Glowing Course Cards */
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .course-card { background: #161b22; border: 1px solid #1f293a; border-radius: 12px; padding: 35px; text-align: center; transition: 0.4s; cursor: pointer; position: relative; }
+        .course-card h3 { font-size: 22px; color: #fff; margin-bottom: 12px; }
+        .course-card p { font-size: 14px; color: #8b949e; line-height: 1.5; }
+        
+        /* Individual Card Glows */
+        #python-card:hover { border-color: #ffd43b; box-shadow: 0 10px 30px rgba(255, 212, 59, 0.2); transform: translateY(-10px); }
+        #js-card:hover { border-color: #f7df1e; box-shadow: 0 10px 30px rgba(247, 223, 30, 0.2); transform: translateY(-10px); }
+        #ml-card:hover { border-color: #00ced1; box-shadow: 0 10px 30px rgba(0, 206, 209, 0.2); transform: translateY(-10px); }
+
+        /* COURSE INNER SECTIONS (Hidden initially) */
+        .course-container { display: none; width: 100%; min-height: 100vh; }
+        .course-container.active { display: flex; }
+
+        /* Universal Sidebar */
+        .sidebar { width: 320px; background: #080a0e; padding: 30px 15px; border-right: 1px solid #1f293a; height: 100vh; position: sticky; top: 75px; overflow-y: auto; }
+        .sidebar h2 { text-align: center; margin-bottom: 25px; font-size: 20px; color: #ffd43b; text-transform: uppercase; }
+        .sidebar a { display: block; color: #8b949e; padding: 12px 15px; border-radius: 6px; margin-bottom: 8px; font-size: 13px; font-weight: 500; cursor: pointer; }
+        .sidebar a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .sidebar a.active { color: #fff; background: #161b22; border: 1px solid #306998; box-shadow: 0 0 15px rgba(48, 105, 152, 0.3); }
+
+        /* Content Area */
+        .content-area { flex: 1; padding: 60px 40px; background: #0d1117; }
+        .chapter-content { display: none; max-width: 900px; margin: 0 auto; animation: fadeIn 0.4s; }
+        .chapter-content.active { display: block; }
+
+        /* Typography inside courses */
+        h1.chapter-title { color: #58a6ff; margin-bottom: 20px; font-size: 32px; border-bottom: 2px solid #306998; padding-bottom: 10px; }
+        h3 { color: #ffd43b; margin: 25px 0 12px 0; font-size: 18px; }
+        p { line-height: 1.7; margin-bottom: 18px; font-size: 16px; color: #c9d1d9; }
+        ul, ol { margin-left: 25px; margin-bottom: 18px; line-height: 1.7; color: #c9d1d9; }
+        li { margin-bottom: 7px; }
+
+        /* Code Block Styling */
+        pre { background: #161b22; border: 1px solid #1f293a; border-radius: 8px; padding: 20px; margin: 20px 0; overflow-x: auto; font-family: monospace; font-size: 14px; color: #f0f6fc; }
+        .practice-set { background: rgba(255, 212, 59, 0.05); border-left: 4px solid #ffd43b; padding: 25px; margin-top: 40px; border-radius: 8px; }
+        .inner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 25px 0; }
+        .inner-card { background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 6px; text-align: center; font-size: 14px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>Codewithhamraz</h1>
-<p>Learn Coding: 0 to 100% | Free Tutorials by Hamraz</p>
-</header>
+    <header>
+        <div class="logo">CodeWithHamraz</div>
+        <nav class="nav-links">
+            <a href="#" onclick="showHomepage()">Home</a>
+            <a href="#courses">Courses</a>
+        </nav>
+    </header>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#html">HTML</a>
-<a href="#css">CSS</a>
-<a href="#js">JavaScript</a>
-<a href="#python">Python</a>
-<a href="#about">About</a>
-</nav>
+    <section id="main-homepage">
+        <div class="hero">
+            <h1>Learn. Practice. Build.</h1>
+            <p>Master the world's most powerful coding languages with interactive handbooks and high-tech real-world projects.</p>
+        </div>
 
-<div class="container">
+        <div class="course-grid" id="courses">
+            <div class="course-card" id="python-card" onclick="openCourse('python')">
+                <h3>🐍 Python Programming</h3>
+                <p>Complete Beginner to Advanced Python Handbook, Practice Sets, and Mega AI Projects.</p>
+            </div>
 
-<section id="home" class="card">
-<h2>🚀 Welcome to Codewithhamraz</h2>
-<p><span class="level">Level 0</span> I teach coding in simple English + Hindi mix. No confusing words.</p>
-<p><span class="level">Level 100%</span> Build projects, make portfolio, crack interviews.</p>
-<p>Made by a 17-year-old for beginners like you. Let's start coding together!</p>
+            <div class="course-card" id="js-card" onclick="openCourse('javascript')">
+                <h3>⚡ JavaScript Mastery</h3>
+                <p>Master Core JS, DOM Manipulation, Promises, Async/Await and Interactive Web Apps.</p>
+            </div>
 
-<div class="grid">
-<div class="box"><h3>📄 HTML</h3><p>Build website structure</p></div>
-<div class="box"><h3>🎨 CSS</h3><p>Make it beautiful</p></div>
-<div class="box"><h3>⚡ JavaScript</h3><p>Add magic & actions</p></div>
-<div class="box"><h3>🐍 Python</h3><p>AI, Data, Backend</p></div>
-</div>
-</section>
+            <div class="course-card" id="ml-card" onclick="openCourse('ml')">
+                <h3>🤖 Machine Learning & AI</h3>
+                <p>Explore Data Science, Neural Networks, Computer Vision, and OpenAI Implementations.</p>
+            </div>
+        </div>
+    </section>
 
-<section id="html" class="card">
-<h2>HTML Tutorial by Hamraz</h2>
-<h3><span class="level">Level 0</span> What is HTML?</h3>
-<p>HTML = HyperText Markup Language. Think: HTML is the skeleton/bones of website. Without HTML, no website exists.</p>
+    <section id="python-section" class="course-container">
+        <div class="sidebar">
+            <h2>Python Handbook</h2>
+            <a onclick="showChapter('py', 'py-cover')" class="active">🏠 Overview</a>
+            <a onclick="showChapter('py', 'py-ch1')">💥 Ch 1: Modules & Pip</a>
+            <a onclick="showChapter('py', 'py-ch2')">🔢 Ch 2: Variables & Datatypes</a>
+            <a onclick="showChapter('py', 'py-ch3')">🔤 Ch 3: Strings</a>
+            <a onclick="showChapter('py', 'py-ch4')">📋 Ch 4: Lists & Tuples</a>
+            <a onclick="showChapter('py', 'py-ch5')">📖 Ch 5: Dictionary & Sets</a>
+            <a onclick="showChapter('py', 'py-ch6')">🔀 Ch 6: Conditionals</a>
+            <a onclick="showChapter('py', 'py-ch7')">🔄 Ch 7: Loops in Python</a>
+            <a onclick="showChapter('py', 'py-ch8')">⚙️ Ch 8: Functions & Recursion</a>
+            <a onclick="showChapter('py', 'py-ch9')">📂 Ch 9: File I/O</a>
+            <a onclick="showChapter('py', 'py-ch10')">🏗️ Ch 10: OOPs Concepts</a>
+            <a onclick="showChapter('py', 'py-ch11')">🧬 Ch 11: Inheritance</a>
+            <a onclick="showChapter('py', 'py-ch12')">🚀 Ch 12: Advanced Python 1</a>
+            <a onclick="showChapter('py', 'py-ch13')">🔥 Ch 13: Advanced Python 2</a>
+            <a onclick="showChapter('py', 'py-proj1')">🎮 Project 1: Snake Water Gun</a>
+            <a onclick="showChapter('py', 'py-proj2')">🎯 Project 2: Perfect Guess</a>
+            <a onclick="showChapter('py', 'py-megaproj')">🤖 Mega AI Projects</a>
+        </div>
+        <div class="content-area">
+            <div id="py-cover" class="chapter-content active">
+                <h1 class="chapter-title">The Ultimate Python Handbook</h1>
+                <p>Welcome to CodeWithHamraz's Python course! Python rules the industry in AI, Data Science, and Web Automation.</p>
+                <pre><code>print("Welcome to CodeWithHamraz Python Guide!")</code></pre>
+            </div>
+            <div id="py-ch1" class="chapter-content">
+                <h1 class="chapter-title">Chapter 1: Modules, Comments & Pip</h1>
+                <p>Python ek aasan aur beginner friendly language hai. Iska use AI aur Automation me sabse zyada hota hai.</p>
+                <p><strong>Pip:</strong> Package manager jo external modules install karta hai (e.g. <code>pip install flask</code>).</p>
+                <pre><code>import os  # Built-in module
+print("Hello World")  # First Program</code></pre>
+            </div>
+            <div id="py-ch2" class="chapter-content">
+                <h1 class="chapter-title">Chapter 2: Variables and Datatypes</h1>
+                <p>Variables data containers hote hain. Python input automatic data type scan karta hai.</p>
+                <pre><code>a = 45  # Integer
+b = "Hamraz"  # String
+c = 85.6  # Float</code></pre>
+            </div>
+            <div id="py-ch3" class="chapter-content">
+                <h1 class="chapter-title">Chapter 3: Strings</h1>
+                <p>String slice syntax: <code>name[start:end]</code>. Characters count, change aur modification standard operations hain.</p>
+                <pre><code>name = "Hamraz"
+print(name[0:3]) # Output: Ham</code></pre>
+            </div>
+            <div id="py-ch4" class="chapter-content"><h1 class="chapter-title">Chapter 4: Lists & Tuples</h1><p>List mutable (changeable) container hai aur Tuple immutable (unchangeable) hota hai.</p><pre><code>myList = [1, 5, 8, "Python"]
+myTuple = (1, 2, 3)</code></pre></div>
+            <div id="py-ch5" class="chapter-content"><h1 class="chapter-title">Chapter 5: Dictionary & Sets</h1><p>Dictionary Key-Value pair collections store karta hai, Sets unique non-repetitive values hold karta hai.</p><pre><code>myDict = {"key": "value"}
+mySet = {1, 2, 3, 3} # duplicate 3 is ignored</code></pre></div>
+            <div id="py-ch6" class="chapter-content"><h1 class="chapter-title">Chapter 6: Conditional Expressions</h1><p>Decision making ke liye <code>if-elif-else</code> ladder statements use hote hain.</p><pre><code>if(a > 18): print("Adult")
+else: print("Minor")</code></pre></div>
+            <div id="py-ch7" class="chapter-content"><h1 class="chapter-title">Chapter 7: Loops in Python</h1><p>Code repetitive block execution ke liye <code>for</code> aur <code>while</code> loops optimized hain.</p><pre><code>for i in range(10):
+    print(i)</code></pre></div>
+            <div id="py-ch8" class="chapter-content"><h1 class="chapter-title">Chapter 8: Functions & Recursion</h1><p>Reusable code block dynamic processing functions generate karta hai. Recursion self-calling operations execute karta hai.</p><pre><code>def greet(name):
+    print("Hello " + name)</code></pre></div>
+            <div id="py-ch9" class="chapter-content"><h1 class="chapter-title">Chapter 9: File I/O</h1><p>Hard drive data files persistent data management control data load methods optimize karti hai.</p><pre><code>with open("file.txt", "r") as f:
+    data = f.read()</code></pre></div>
+            <div id="py-ch10" class="chapter-content"><h1 class="chapter-title">Chapter 10: OOPs Concepts</h1><p>Classes, Objects aur attributes blueprint standard real-world architectural entity logic design models hain.</p><pre><code>class Employee:
+    company = "Google"</code></pre></div>
+            <div id="py-ch11" class="chapter-content"><h1 class="chapter-title">Chapter 11: Inheritance</h1><p>Base class attributes and behaviors code extension sub-class properties logic expand methods inject patterns support krti h.</p></div>
+            <div id="py-ch12" class="chapter-content"><h1 class="chapter-title">Chapter 12: Advanced Python 1</h1><p>Exception Handling (try-except), Walrus operator, Match Case aur Custom Exception management system operations standard code handling types compile karta h.</p></div>
+            <div id="py-ch13" class="chapter-content"><h1 class="chapter-title">Chapter 13: Advanced Python 2</h1><p>Lambda expressions, Map, Filter, Reduce architecture operations functions sequence logic structures design optimize tools execute elements compile methods handle execution map layers deploy parameters sync tags pattern models build patterns execute structure.</p></div>
+            <div id="py-proj1" class="chapter-content"><h1 class="chapter-title">Project 1: Snake Water Gun</h1><p>Random matrix module choices logical conditions engine computer processing workflow structure game logic compile operations trace map handles.</p></div>
+            <div id="py-proj2" class="chapter-content"><h1 class="chapter-title">Project 2: Perfect Guess Game</h1><p>High low system algorithm loop counter tracking user engine score generation modules build structure.</p></div>
+            <div id="py-megaproj" class="chapter-content">
+                <h1 class="chapter-title">🤖 Mega AI Projects</h1>
+                <h3>1. Jarvis Voice Assistant</h3>
+                <p>Speech recognition, Pyttsx3 text modules, internet browsers aur dynamic data processing engine control setup execute patterns system deploy architecture.</p>
+                <h3>2. Auto WhatsApp Chatbot</h3>
+                <p>Pyautogui system capture click simulation coordinates monitoring and dynamic processing automation.</p>
+            </div>
+        </div>
+    </section>
 
-<h3><span class="level">Level 1</span> Your First Code</h3>
+    <section id="javascript-section" class="course-container">
+        <div class="sidebar">
+            <h2>JavaScript Guide</h2>
+            <a onclick="showChapter('js', 'js-cover')" class="active">🏠 JS Overview</a>
+            <a onclick="showChapter('js', 'js-ch1')">⚡ Variables & Operators</a>
+            <a onclick="showChapter('js', 'js-ch2')">🎯 DOM Manipulation</a>
+            <a onclick="showChapter('js', 'js-ch3')">🚀 Async Await & API</a>
+            <a onclick="showChapter('js', 'js-proj')">🎮 Interactive Projects</a>
+        </div>
+        <div class="content-area">
+            <div id="js-cover" class="chapter-content active">
+                <h1 class="chapter-title">JavaScript Mastery</h1>
+                <p>JavaScript core internet interaction processing software model dynamic interfaces construct data pipeline client layer system deploy systems automation control web structure development handles.</p>
+                <pre><code>console.log("JavaScript Engine Live!");</code></pre>
+            </div>
+            <div id="js-ch1" class="chapter-content">
+                <h1 class="chapter-title">Variables & Modern Scopes</h1>
+                <p>Modern scripts contain scope optimization declarations <code>let</code>, <code>const</code>, and <code>var</code> global structures tracking elements definitions block execution scope logic layout operations.</p>
+                <pre><code>const pi = 3.14159;
+let userScore = 100;</code></pre>
+            </div>
+            <div id="js-ch2" class="chapter-content">
+                <h1 class="chapter-title">Document Object Model (DOM)</h1>
+                <p>DOM logic query system event processing interface injection handlers dynamically web document content manipulate click trackers elements update layout design components rendering dynamic engine rules tracking selectors structural manipulation control patterns.</p>
+                <pre><code>document.querySelector("#btn").addEventListener("click", () => {
+    document.body.style.backgroundColor = "cyan";
+});</code></pre>
+            </div>
+            <div id="js-ch3" class="chapter-content">
+                <h1 class="chapter-title">Promises & Asynchronous Execution</h1>
+                <p>Asynchronous runtime execution handles remote database communication streams server requests fetch structural logic handling architecture models <code>async/await</code> pipeline tracking standard patterns.</p>
+                <pre><code>async function fetchUserData() {
+    let response = await fetch('https://api.github.com');
+    let data = await response.json();
+    console.log(data);
+}</code></pre>
+            </div>
+            <div id="js-proj" class="chapter-content">
+                <h1 class="chapter-title">JS Real-World Projects</h1>
+                <h3>1. Dynamic Weather Web App</h3>
+                <p>Live remote weather station open mapping structure weather parameters client interfaces rendering live widgets engine execution layers update dashboard components display metrics tracking tools control layout modules framework.</p>
+            </div>
+        </div>
+    </section>
 
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;My First Page - Codewithhamraz&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Hello! I am learning with Codewithhamraz&lt;/h1&gt;
-  &lt;p&gt;Coding is fun!&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+    <section id="ml-section" class="course-container">
+        <div class="sidebar">
+            <h2>AI & ML Core</h2>
+            <a onclick="showChapter('ml', 'ml-cover')" class="active">🏠 ML Overview</a>
+            <a onclick="showChapter('ml', 'ml-ch1')">📊 Data Prep & NumPy</a>
+            <a onclick="showChapter('ml', 'ml-ch2')">📈 Regression Models</a>
+            <a onclick="showChapter('ml', 'ml-ch3')">🧠 Deep Learning & AI</a>
+        </div>
+        <div class="content-area">
+            <div id="ml-cover" class="chapter-content active">
+                <h1 class="chapter-title">Machine Learning & Artificial Intelligence</h1>
+                <p>Mathematical calculations predictive algorithm automation systems deep array vector manipulation dataset classification clusters neural structures intelligence setup engineering data science control system patterns tracking training optimization metrics standard model.</p>
+            </div>
+            <div id="ml-ch1" class="chapter-content">
+                <h1 class="chapter-title">Data Science Libraries (NumPy & Pandas)</h1>
+                <p>Multi dimensional matrix processing data framing vector calculations analysis array transformation matrix logic execution framework data profiling metrics standard data structures load optimization clean records formatting modules trace structure parsing tools setup elements execution matrix maps sync.</p>
+                <pre><code>import numpy as np
+import pandas as pd
+df = pd.read_csv('dataset.csv')</code></pre>
+            </div>
+            <div id="ml-ch2" class="chapter-content">
+                <h1 class="chapter-title">Supervised Machine Learning Algorithms</h1>
+                <p>Linear Regression, Logical classification tree structures modeling split validation training data distribution curve patterns evaluation tracking metrics mean error square checking accuracy loss verification algorithms design calculation system deploy logic framework structural optimization.</p>
+                <pre><code>from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X_train, y_train)</code></pre>
+            </div>
+            <div id="ml-ch3" class="chapter-content">
+                <h1 class="chapter-title">Deep Learning Architecture (TensorFlow & Neural Nets)</h1>
+                <p>Artificial Neural Network design nodes weights backpropagation activations functions computation systems processing hidden network matrix hidden layers computation vision recognition transformers models design pipelines deployment automated cognitive framework logic calculation systems processing models layout structure track optimized.</p>
+            </div>
+        </div>
+    </section>
 
-<h3><span class="level">Level 100%</span> Project Challenge</h3>
-<p>Make "About Me" page with your photo, name, 3 hobbies, and contact email. Share link with friends!</p>
-</section>
+    <script>
+        function openCourse(courseType) {
+            // Hide main homepage layout
+            document.getElementById('main-homepage').style.display = 'none';
+            
+            // Close any currently running courses
+            const activeContainers = document.querySelectorAll('.course-container');
+            activeContainers.forEach(container => container.classList.remove('active'));
+            
+            // Activate the correct course section container
+            const selectedSection = document.getElementById(courseType + '-section');
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+                
+                // Find first item in that specific course container sidebar and display it
+                const initialContentId = selectedSection.querySelector('.chapter-content').id;
+                showChapter(courseType, initialContentId);
+            }
+            window.scrollTo(0, 0);
+        }
 
-<section id="css" class="card">
-<h2>CSS Tutorial by Hamraz</h2>
-<h3><span class="level">Level 0</span> What is CSS?</h3>
-<p>CSS = Cascading Style Sheets. If HTML is skeleton, CSS is skin, hair, clothes. CSS makes site colorful & modern.</p>
-</section>
+        function showHomepage() {
+            // Shut down all courses view panels
+            const activeContainers = document.querySelectorAll('.course-container');
+            activeContainers.forEach(container => container.classList.remove('active'));
+            
+            // Reload home layout dashboard
+            document.getElementById('main-homepage').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
 
-<section id="js" class="card">
-<h2>JavaScript Tutorial by Hamraz</h2>
-<h3><span class="level">Level 0</span> What is JavaScript?</h3>
-<p>JavaScript = Brain + Muscles. HTML=body, CSS=clothes, JS=brain. JS makes buttons work.</p>
-</section>
+        function showChapter(coursePrefix, targetChapterId) {
+            const contextSection = document.getElementById(coursePrefix + '-section');
+            if (!contextSection) return;
 
-<section id="python" class="card">
-<h2>Python Tutorial by Hamraz</h2>
-<h3><span class="level">Level 0</span> What is Python?</h3>
-<p>Python = Easiest coding language. Reads like English. Used by Google, YouTube, Instagram, AI.</p>
-</section>
+            // Hide previous tabs content within this active section scope
+            const siblingChapters = contextSection.querySelectorAll('.chapter-content');
+            siblingChapters.forEach(tab => tab.classList.remove('active'));
 
-<section id="about" class="card">
-<h2>About Hamraz</h2>
-<p>Hi! I am Hamraz, 17 years old. I started coding at 15. I know how confusing coding feels in the beginning.</p>
-<p>That's why I made Codewithhamraz - to teach coding in the simplest way possible. 0 to 100% journey, step by step.</p>
-</section>
+            // Wake up active requested chapter container panel
+            const currentTab = document.getElementById(targetChapterId);
+            if (currentTab) currentTab.classList.add('active');
 
-</div>
+            // Toggle sidebar active selection visual style indicators
+            const navigationLinks = contextSection.querySelectorAll('.sidebar a');
+            navigationLinks.forEach(link => link.classList.remove('active'));
 
-<footer>
-Made with ❤️ by Hamraz | Codewithhamraz | 0 to 100% Free Coding Tutorials | 2026
-</footer>
-
-<script>
-function copyCode(btn) {
-  const code = btn.nextElementSibling.querySelector('code').innerText;
-  navigator.clipboard.writeText(code);
-  btn.innerText = "Copied!";
-  setTimeout(() => btn.innerText = "Copy", 2000);
-}
-</script>
-
+            if (event && event.currentTarget && event.currentTarget.tagName === 'A') {
+                event.currentTarget.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
